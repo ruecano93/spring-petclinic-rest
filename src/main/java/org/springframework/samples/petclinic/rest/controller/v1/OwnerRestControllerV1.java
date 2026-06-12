@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic.rest.controller;
+package org.springframework.samples.petclinic.rest.controller.v1;
 
 import java.util.Collection;
 import java.util.List;
@@ -51,7 +51,7 @@ import jakarta.transaction.Transactional;
 @RestController
 @CrossOrigin(exposedHeaders = "errors, content-type")
 @RequestMapping("/api")
-public class OwnerRestController implements OwnersApi {
+public class OwnerRestControllerV1 implements OwnersApi {
 
     private final ClinicService clinicService;
 
@@ -61,10 +61,10 @@ public class OwnerRestController implements OwnersApi {
 
     private final VisitMapper visitMapper;
 
-    public OwnerRestController(ClinicService clinicService,
-                               OwnerMapper ownerMapper,
-                               PetMapper petMapper,
-                               VisitMapper visitMapper) {
+    public OwnerRestControllerV1(ClinicService clinicService,
+                                 OwnerMapper ownerMapper,
+                                 PetMapper petMapper,
+                                 VisitMapper visitMapper) {
         this.clinicService = clinicService;
         this.ownerMapper = ownerMapper;
         this.petMapper = petMapper;

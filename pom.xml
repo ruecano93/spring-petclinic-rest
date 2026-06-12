@@ -368,6 +368,8 @@
                             <configOptions>
                                 <!-- RestController implementation is provided by Petclinic developers -->
                                 <interfaceOnly>true</interfaceOnly>
+                                <!-- Generate API interfaces from OpenAPI tags -->
+                                <useTags>true</useTags>
                                 <!-- Activating Java 8 features -->
                                 <performBeanValidation>true</performBeanValidation>
                                 <useSpringBoot3>true</useSpringBoot3>

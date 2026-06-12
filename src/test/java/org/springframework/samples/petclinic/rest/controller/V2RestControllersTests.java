@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.samples.petclinic.mapper.OwnerMapper;
 import org.springframework.samples.petclinic.mapper.PetMapper;
 import org.springframework.samples.petclinic.rest.advice.ExceptionControllerAdvice;
+import org.springframework.samples.petclinic.rest.controller.v2.OwnerRestControllerV2;
+import org.springframework.samples.petclinic.rest.controller.v2.PetRestControllerV2;
 import org.springframework.samples.petclinic.rest.dto.OwnerDto;
 import org.springframework.samples.petclinic.rest.dto.PetDto;
 import org.springframework.samples.petclinic.rest.dto.PetTypeDto;
@@ -35,9 +37,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @ContextConfiguration(classes = ApplicationTestConfig.class)
 @WebAppConfiguration
-public class V2RestControllerTests {
+public class V2RestControllersTests {
     @Autowired
-    private V2RestController v2RestController;
+    private OwnerRestControllerV2 ownerRestControllerV2;
+
+    @Autowired
+    private PetRestControllerV2 petRestControllerV2;
 
     @Autowired
     private OwnerMapper ownerMapper;
@@ -56,7 +61,7 @@ public class V2RestControllerTests {
 
     @BeforeEach
     void initOwners() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(v2RestController)
+        this.mockMvc = MockMvcBuilders.standaloneSetup(ownerRestControllerV2, petRestControllerV2)
             .setControllerAdvice(new ExceptionControllerAdvice())
             .build();
         owners = new ArrayList<>();
